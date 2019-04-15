@@ -9,6 +9,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+app.get('/test', (req, res) => {
+  res.send('test test');
+});
+
 app.get('/:name', (req, res) => {
   const fpath = path.join(__dirname, 'public', req.params.name);
   if (fs.existsSync(fpath)) {
@@ -16,14 +20,6 @@ app.get('/:name', (req, res) => {
   } else {
     res.sendFile(fpath404);
   }
-});
-
-app.get('/test', (req, res) => {
-  res.send('test test');
-});
-
-app.get('/image.jpg', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'image.jpeg'));
 });
 
 app.listen(3000, () => {
